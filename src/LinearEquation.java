@@ -30,9 +30,7 @@ public class LinearEquation {
 
         if (y1 == y2) {
             return "y = " + y1;
-        }  // 1.25 --> 5/4  w = 1 d = 0.25
-           // 2.75 --> 11/4  w = 2 d = 0.25
-           // 3.5 --> 7/2   w = 3 d = 0.5
+        }
 
         double slopeValue = slope();
         int wholeNumber = (int) slopeValue;
@@ -51,37 +49,8 @@ public class LinearEquation {
         numerator += times;
 
         return "y = " + numerator + "/" + denominator + "x + " + yIntercept();
-
-//
-//        if (slope() > 0) {
-//        int wholeNumber = (int) slope();
-//        double decimalNumber = slope() - wholeNumber;
-//        System.out.println("Decimal Number: " + decimalNumber); //(6, -60), (-18, 12)
-//        int denominator = (int) (1 / decimalNumber);
-//        int numerator = wholeNumber * denominator;
-//
-//        double oneOverDenom = (double) 1 / denominator;
-//        System.out.println("Denominator " + denominator);
-//        System.out.println("oneOverDemon: " + oneOverDenom);
-//        int times = 0;
-//        while (decimalNumber > 0) {
-//            decimalNumber -= oneOverDenom;
-//            times += 1;
-//        }
-
-//        int leftover = 0;
-//        double divisor = (double) 1 / denominator;
-//        while (true) {
-//            if (decimalNumber > 0) {
-//                decimalNumber -= divisor;
-//                leftover += 1;
-//            } else {
-//                break;
-//            }
-//        }
-//        double leftover = (int) (decimalNumber / 1);
-
     }
+
     public String coordinateForX(double x) {
         double yValue = slope() * x + yIntercept();
         return "(" + x + "," + yValue + ")";
