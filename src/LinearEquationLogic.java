@@ -32,13 +32,18 @@ public class LinearEquationLogic {
             System.out.print("Enter a value for x: ");
             double xValue = scan.nextDouble();
             System.out.println();
-            System.out.println("The point on the line is " + l.coordinateForX(xValue));
+            if (x1Int == x2Int) {
+                System.out.println("The x-coordinate cannot be used for vertical lines.");
+            } else {
+                System.out.println("The point on the line is " + l.coordinateForX(xValue));
+            }
             scan.nextLine();
             System.out.print("Would you like to enter another pair of coordinates? y/n: ");
             String answer = scan.nextLine();
             answer = answer.toUpperCase();
             if (answer.equals("Y")) {
             } else {
+                System.out.println("Thank you for using the slope calculator, goodbye!");
                 break;
             }
         }

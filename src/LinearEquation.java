@@ -9,18 +9,22 @@ public class LinearEquation {
         this.x2 = x2;
         this.y2 = y2;
     }
+    private double roundedToHundredth(double toRound) {
+        return Math.round(toRound * 100) / 100.0;
+    }
 
     public double distance() {
         double distance = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
-        return Math.round(distance * 100) / 100.0; //Rounded Distance
+        return roundedToHundredth(distance); //Rounded Distance
     }
 
     public double yIntercept() {
-        return y1 - slope() * (x1); //Y-Intercept
+        double yInt = y1 - slope() * (x1);
+        return roundedToHundredth(yInt); //Y-Intercept
     }
 
     public double slope() {
-        return (double) (y2 - y1) / (x2-x1); //Slope
+        return (double) (y2 - y1) / (x2 - x1);
     }
 
     public String equation() {
@@ -40,7 +44,7 @@ public class LinearEquation {
             return "y = " + wholeNumber + "x +" + yIntercept();
         }
 
-        int denominator = (int) (1 / decimalPart);
+        int denominator = (int) Math.round(1 / decimalPart);
         int numerator = wholeNumber * denominator;
 
         double remainingPart = decimalPart * denominator;
@@ -57,12 +61,14 @@ public class LinearEquation {
     }
     public String lineInfo() {
         String message = "";
+        if (x1 == x2) {
+            return "These points on a vertical line: " + equation() + "\n" + "The slope is undefined";
+        }
         message += "The two points are: (" + x1 + "," + y1 + ") and " + "(" + x2 + "," + y2 + ")" + "\n";
         message += "The equation of the line between these points is: " + equation() + "\n";
-        message += "The y-intercept of this line is: " + yIntercept() + "\n";
         message += "The slope of this line is: " + slope() + "\n";
+        message += "The y-intercept of this line is: " + yIntercept() + "\n";
         message += "The distance between these points is " + distance();
         return message;
     }
-
 }
